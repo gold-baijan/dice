@@ -15,7 +15,7 @@ class KostiPage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 91, 31, 31),
       appBar: AppBar(
         title: const Text(
-          'ИГРА В КОСТИ',
+          'N¬p∆  ß  kº©†И',
           style: TextStyle(fontSize: 30, color: Colors.white),
         ),
         backgroundColor: const Color.fromARGB(255, 71, 24, 24),
@@ -46,7 +46,7 @@ class KostiPage extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                'Бросок',
+                'Брøсøк',
                 style: TextStyle(
                   fontSize: 24,
                   color: Color.fromARGB(255, 91, 31, 31),

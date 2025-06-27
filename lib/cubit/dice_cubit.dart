@@ -7,7 +7,8 @@ class DiceCubit extends Cubit<DiceState> {
 
   void roll() {
     final random = Random();
-    final value=random.nextInt(6) + 1;
-    emit(DiceState(value, value));
+    final value1 = random.nextInt(6) + 1;
+    final value2 = random.nextInt(6) + 1;
+    emit(DiceState(value1, value2));
   }
 }
