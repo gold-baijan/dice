@@ -1,88 +1,62 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_dice_/dice.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dice_/cubit/dice_cubit.dart';
+import 'package:flutter_dice_/cubit/dice_state.dart';
+import 'package:flutter_dice_/widgets/tochki.dart';
 
 void main() {
-  runApp(const Kosti());
+  runApp(const KostiApp());
 }
 
-class Kosti extends StatelessWidget {
-  const Kosti({super.key});
+class KostiApp extends StatelessWidget {
+  const KostiApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: KostiPage(),
+      home: BlocProvider(
+        create: (_) => DiceCubit(),
+        child: const KostiPage(),
+      ),
     );
   }
 }
 
-class KostiPage extends StatefulWidget {
+class KostiPage extends StatelessWidget {
   const KostiPage({super.key});
 
   @override
-  KostiPageState createState() => KostiPageState();
-}
-
-class KostiPageState extends State<KostiPage> {
-  int levo = 1;
-  int pravo = 1;
-
-  void brosok() {
-    setState(() {
-      levo = Random().nextInt(6) + 1;
-      pravo = Random().nextInt(6) + 1;
-    });
-  }
-
-  Widget buildDice(int number) {
-    return Container(
-      margin: const EdgeInsets.all(10),
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(color: Colors.black45, blurRadius: 8, offset: Offset(4, 4)),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: storonyKosti(number),
-      ),
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final diceCubit = context.read<DiceCubit>();
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 91, 31, 31),
       appBar: AppBar(
-        title: const Text(
-          'ИГРА В КОСТИ',
-          style: TextStyle(color: Colors.white, fontSize: 35),
-        ),
+        title: const Text('ИГРА В КОСТИ', style: TextStyle(fontSize: 30)),
         backgroundColor: const Color.fromARGB(255, 71, 24, 24),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [buildDice(levo), buildDice(pravo)],
+            BlocBuilder<DiceCubit, DiceState>(
+              builder: (context, state) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BuildDice(number: state.left),
+                    BuildDice(number: state.right),
+                  ],
+                );
+              },
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: brosok,
+              onPressed: diceCubit.roll,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 20,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               ),
               child: const Text(
                 'Бросок',
@@ -99,8 +73,4 @@ class KostiPageState extends State<KostiPage> {
     );
   }
 }
-
-
-
-
 
