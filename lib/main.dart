@@ -33,7 +33,7 @@ class KostiPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 91, 31, 31),
       appBar: AppBar(
-        title: const Text('ИГРА В КОСТИ', style: TextStyle(fontSize: 30)),
+        title: const Text('ИГРА В КОСТИ', style: TextStyle(fontSize: 30, color: Colors.white)),
         backgroundColor: const Color.fromARGB(255, 71, 24, 24),
       ),
       body: Center(
