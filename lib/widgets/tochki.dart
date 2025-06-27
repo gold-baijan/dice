@@ -24,7 +24,7 @@ class BuildDice extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: storonyKosti(number),
+        child: Storony.build(number),
       ),
     );
   }
