@@ -5,10 +5,13 @@ class Storony {
   static Widget pusto() => const SizedBox(width: 8, height: 8);
 
   static Widget tochka() => Container(
-        width: 8,
-        height: 8,
-        decoration: const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-      );
+    width: 8,
+    height: 8,
+    decoration: const BoxDecoration(
+      color: Colors.black,
+      shape: BoxShape.circle,
+    ),
+  );
 
   static Widget build(int number) {
     final layout = DiceFace.layouts[number - 1];

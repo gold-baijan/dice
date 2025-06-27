@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dice_/widgets/storony.dart';
 
 class BuildDice extends StatelessWidget {
-  const BuildDice({
-    super.key,
-    required this.number,
-  });
+  const BuildDice({super.key, required this.number});
 
   final int number;
 
