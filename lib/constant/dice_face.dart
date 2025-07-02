@@ -1,11 +1,16 @@
 class DiceFace {
   static const oneDot = [false, false, false, false, true, false, false, false, false];
+  static const twoDots = [true, false, false, false, false, false, false, false, true]; 
+  static const threeDots = [true, false, false, false, true, false, false, false, true];
+  static const fourDots = [true, false, true, false, false, false, true, false, true];
+  static const fiveDots = [true, false, true, false, true, false, true, false, true];
+  static const sixDots = [true, false, true, true, false, true, true, false, true];
   static const List<List<bool>> layouts = [
     oneDot, // 1
-    [true, false, false, false, false, false, false, false, true], // 2
-    [true, false, false, false, true, false, false, false, true], // 3
-    [true, false, true, false, false, false, true, false, true], // 4
-    [true, false, true, false, true, false, true, false, true], // 5
-    [true, false, true, true, false, true, true, false, true], // 6
+    twoDots, // 2
+    threeDots, // 3
+    fourDots, // 4
+    fiveDots, // 5
+    sixDots // 6
   ];
 }
